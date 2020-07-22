@@ -27,6 +27,8 @@ class Solution:
                 if dist.get(sub, maxv) > d + 1:
                     heu = d + 1 + max(n - ii, n - jj)
                     # heu = d + 1     把上面一行注释掉，换成这行，仍旧可以通过，但时间翻倍
+                    # heu = d + 1 + (n - ii + n - jj)       不通过
+                    # heu = d + 1 + max(n - ii, n - jj)     不通过
                     hh.heappush(heap, (heu, d + 1, ii, jj))
                     dist[sub] = d + 1
         return -1
