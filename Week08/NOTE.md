@@ -1,6 +1,7 @@
 学习笔记
 
 @ 排序 -- 归并
+```
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
         def mg(start, end):
@@ -30,4 +31,4 @@ class Solution:
         aux = [0] * n
         mg(0, n - 1)
         return nums
-                
+```
