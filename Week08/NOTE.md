@@ -74,3 +74,36 @@ class Solution:
         qs(0, len(nums) - 1)
         return nums
 ```
+
+
+### 排序 -- 堆排序
+```
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        def sw(i, j):
+            nums[i], nums[j] = nums[j], nums[i]
+        
+        def sift(p, end):
+            while 1:
+                p2 = p << 1
+                l, r = p2 + 1, p2 + 2
+                if l > end:
+                    break
+                child = l
+                if r <= end and nums[r] > nums[l]:
+                    child = r
+                if nums[p] < nums[child]:
+                    sw(p, child)
+                    p = child
+                else:
+                    break
+        
+        n = len(nums)
+        for i in range((n - 1) >> 1, -1, -1):
+            sift(i, n - 1)
+        
+        for end in range(n - 1, 0, -1):
+            sift(0, end)
+            sw(0, end)
+        return nums
+```
